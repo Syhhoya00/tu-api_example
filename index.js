@@ -42,6 +42,33 @@ async function testCode(metadata) {
   return res.data;
 }
 
+app.get("/getlist", async (req, res) => {
+  try{
+ 
+  const balance = await getData()
+  res.json(balance);
+}catch(e){
+  console.log(e)
+}
+});
+
+async function getData() {
+
+  const res = await axios.get(
+    `https://kip17-api.klaytnapi.com/v2/contract`,
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Basic S0FTSzNWSzI5WEFFVkdKWEZFUkpSOFlROmRJVlFwZG9yV1BFakc5MzIwUVVtb1BiclRhZnRNQ0RZTFE5VDBQeE8=",
+        "x-chain-id": "1001",
+      },
+    }
+  );
+  return res.data;
+}
+
 
 
 
