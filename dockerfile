@@ -2,10 +2,10 @@
   FROM node:14.16.0
 
   RUN mkdir -p /workspace
-
+  
   WORKDIR /workspace
 
-  ADD . /workspace/dç
+  ADD . /workspace/
 
   RUN npm install
 
@@ -13,4 +13,4 @@
 
   EXPOSE 8080
 
-  CMD [ "npm", "run", "start" ]ç
+  CMD [ "npm", "run", "start" ]
