@@ -51,10 +51,18 @@ app.get("/getlist", async (req, res) => {
   console.log(e)
 }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ff3dd6c35a76e3ac044078a65160a17beb283b0
 async function getData() {
 
   const res = await axios.get(
     `https://kip17-api.klaytnapi.com/v2/contract`,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ff3dd6c35a76e3ac044078a65160a17beb283b0
     {
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +75,10 @@ async function getData() {
   return res.data;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9ff3dd6c35a76e3ac044078a65160a17beb283b0
 
 
 
