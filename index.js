@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const app = express();
 require("dotenv").config();
@@ -7,9 +8,13 @@ const port = process.env.PORT;
 const Caver = require("caver-js");
 const caver = new Caver(`https://api.baobab.klaytn.net:8651`);
 
-
 app.use(express.json());
-
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+  }),
+  );
 app.listen(port, () => {
   console.log("listening...", port);
 });
@@ -25,6 +30,7 @@ app.post("/metadata", async (req, res) => {
 });
 async function testCode(metadata) {
 
+
   const res = await axios.post(
     `${url}/v1/metadata`,
     {
@@ -33,6 +39,7 @@ async function testCode(metadata) {
     {
       headers: {
         "Content-Type": "application/json",
+        
         Authorization:
           "Basic S0FTSzNWSzI5WEFFVkdKWEZFUkpSOFlROmRJVlFwZG9yV1BFakc5MzIwUVVtb1BiclRhZnRNQ0RZTFE5VDBQeE8=",
         "x-chain-id": "1001",
@@ -44,8 +51,9 @@ async function testCode(metadata) {
 
 app.get("/getlist", async (req, res) => {
   try{
- 
+   
   const balance = await getData()
+
   res.json(balance);
 }catch(e){
   console.log(e)
@@ -60,6 +68,7 @@ async function getData() {
     {
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": 'http://localhost:3000',
         Authorization:
           "Basic S0FTSzNWSzI5WEFFVkdKWEZFUkpSOFlROmRJVlFwZG9yV1BFakc5MzIwUVVtb1BiclRhZnRNQ0RZTFE5VDBQeE8=",
         "x-chain-id": "1001",
